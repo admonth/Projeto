@@ -45,7 +45,8 @@ body * {
 /*O "*" é o elemento universal, no caso acima quer dizer: Aplique as condições abaixo em TODOS (universal) elementos dentro do BODY*/
 
 #container {
-    width: 360px;
+    width: 100%;
+    max-width: 588px;
     margin: 56px auto 0px; /*auto centraliza direita e esquerda e 0 é bottom, 56px top, a ordem seria top, right, bottom e left, mas como o auto que ta no right já centraliza os dois, o 0px vai direto pro bottom, ainda centralizando o left.*/
     padding: 0 24px;
 }
