@@ -1,0 +1,181 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*Reset, por padrão o navegador da algumas medidas de espaçamento e margem, mas nós estamos tirando-as e resetando!*/
+
+:root {
+    --text-color: white;
+    --bg-url: url(./assets/bg-mobile.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.1);
+    --surface-color-hover: rgba(255, 255, 255, 0.05);
+    --social-link-hover: rgba(255, 255, 255, 0.2);
+    --switch-bg-url: url(./assets/moon-stars.svg);
+} /*Root: raiz; Estou definindo uma variável (--text-color) pro estilo e toda vez que eu usar ela algo vai ficar branco, por exemplo: Eu poderia substituir o "color: #ffffff" do "body *" por "color: var(--text-color);" e teria a mesma funcionalidade já que defini essa variável como white.*/
+
+.light {
+    --text-color: black;
+    --bg-url: url(./assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --social-link-hover: rgba(0, 0, 0, 0.1);
+    --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+    /*background-image: url(./assets/bg-mobile.jpg);
+    background-repeat: no-repeat; [Quando se coloca uma imagem por padrão ela fica se repetindo, com isso, fica somente uma imagem]
+    background-position: top center; [Eixo Y e X (Y vertical, X horizontal (horizonte), top diz que o eixo Y deve ficar no topo, ou seja, os limites da imagem vai ficar no topo e o center diz que o eixo X (horizontal) vai ser centralizado no meio da página]
+    background-size: cover; [Vai cobrir todo o espaço visível]/*
+
+    /* background: color image repeat position/size*/
+    background: var(--bg-url) no-repeat top center/cover;
+    
+}
+
+body * {
+    font-family: "Inter", sans-serif;
+    color: var(--text-color);
+}
+/*O "*" é o elemento universal, no caso acima quer dizer: Aplique as condições abaixo em TODOS (universal) elementos dentro do BODY*/
+
+#container {
+    width: 360px;
+    margin: 56px auto 0px; /*auto centraliza direita e esquerda e 0 é bottom, 56px top, a ordem seria top, right, bottom e left, mas como o auto que ta no right já centraliza os dois, o 0px vai direto pro bottom, ainda centralizando o left.*/
+    padding: 0 24px;
+}
+
+/*profile*/
+#profile {
+    text-align: center;
+    padding: 24px;
+}
+/*#profile {
+    text-align: center;
+}
+
+Vale ressaltar que caso você deixe esse profile ligado, se você reparar o #profile img tem prioridade da cascata por ser um id(100) e um elemento(imagem) que é 1; Então seria 101 de prioridade, já o #profile seria só id, ou seja, a prioridade é 100, nesse caso o "display: block;" iria sobrepor e o text-align não iria funcionar, pois só funciona em inline. Caso tire o "margin: auto;" e o "display: block;" e deixe só o "text-align: center;" no #profile (pai), vai centralizar.*/
+
+#profile p {
+    font-weight: 500;
+    font-size: 16px; /*Por padrão já é 16px*/
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+#profile img {
+    width: 112px;
+}
+/*Em elemento inline não é possível aplicar o "margin: auto;".
+Revisando: "display: inline;" define que o elemento será organizado em linha, ou seja, seu espaço ocupará a mesma linha, ou seja, um do lado do outro, já o "display: block;" define que um elemento vai ocupar um bloco inteiro, logo caso adicione um elemento posterior ele será forçado a ficar abaixo deste, já que ele ocupa um bloco inteiro. (display=visualização), se coloca "display: none;", vai ocultar o elemento, simples assim.
+Inline-block: Mantenha propriedades inline, porém deixe eu colocar algumas propriedades block, mas nesse caso o "margin: auto"; também não funciona.
+Outro adendo IMPORTANTÍSSIMO: todos os elementos inline vão permitir que seu pai (No caso acima o pai de "#profile img" seria "#profile"), defina-os com text-align, podendo deixa-lo right (totalmente pro lado direito), left (esquerdo e o que normalmente é o padrão se você não mexer) ou deixar center, que vai centralizar ele.*/
+
+/*switch*/
+
+#switch {
+    position: relative; /*o absoluto (absolute} dos elementos filhos dele serão relativos a ele, ou seja, se eu der um position absolute num elemento filho como button, e jogar right: 0; para ir tudo pra direita, só ira para direita nos limites do switch, e não da página inteira. 
+    Vai permitir que tudo que esteja absoluto dentro dele não passe de suas fronteiras, do limite do próprio switch, se tiver dúvidas sobre o tamanho do switch, usar um border: 1px solid red; para ter uma ideia.*/
+    width: 64px;
+    /*Lembra que o switch é display block? então tu usa margin: 0 (0 para cima e pra baixo) e auto (pra centralizar no meio), só que no caso, no modelo do figma tem um espacinho de 4px, então a gente coloca 4px e auto; (para ficar 4px em cima e em baixo de espaço)*/
+    margin: 4px auto;
+}
+
+#switch button {
+    width: 32px;
+    height: 32px;
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%; /*Agora que 50% do elemento ta pra fora (por cima), você usa o top pra deixar 50% pra cima (dentro do switch) e aí alinha perfeitamente, *ESSE É O MÉTODO QUE USAMOS PARA ALINHAR ELEMENTOS COM POSITION ABSOLUTE!* */
+    left: 0;
+    z-index: 1;
+    transform: translateY(-50%); /*Lembra daquela história de X e Y? pensa naqueles gráfios lá que sao tipo um +, a linha reta (vertical) é o Y, e o que passa no meio (horizontal, tu lembra de horizonte) é o X; O Y você usa para alinhar para cima e para baixo e o X para os lados, aí ta dizendo: pega esse botão e deixa 50% dele para fora do switch (-50%), só que esse -50% é para cima, se tu colocar 50% ele vai deixar 50% dele para fora, só que para baixo.*/
+}
+
+.light #switch button {
+    right: 0;
+    left: initial; /*volta pra sua maneira inicial*/
+}
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px); /*webkit é pra funcionar em outros navegadores*/
+    border-radius: 9999px;
+}
+
+/*links*/
+ul {
+    list-style: none; /*Tira os pontinhos que vem por padrão*/
+
+    display: flex; /*[Vai colocar os elementos do lado do outro de forma flexível, por exemplo, se eu tiro um elemento agora, ele vai se ajeitar pra ficar flexível dentro do espaço delimitado, que no nosso caso é TODO o espaço, graças ao "box-sizing: border-box;"]*/
+
+    flex-direction: column; /*[Por padrão vem row, que é um elemento do lado do outro]*/
+
+    gap: 16px; /*[O gap cria espaços apenas ENTRE os elementos, nem em cima, nem em baixo, nem aos lados, vai espaçar os elementos]*/
+    padding: 24px 0;
+}
+
+ul li a{
+    border: 1px solid var(--text-color);
+    display: flex; /*Ajuste flexível das coisas*/
+    justify-content: center;
+    /*Também poderia ser feito por display block e um text-align center*/
+    align-items: center; /*Vai centralizar os itens horizontalmente (pensa que uma linha virtual passa no meio de cada li, graças ao display flex, nesse caso o align-itens deixa eles centralizados, já o justify-content os centraliza verticalmente*/
+    padding: 16px 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+
+    backdrop-filter: blur(4px); /*(embassado)*/
+    text-decoration: none; /*É pra tirar a linha que fica em baixo de link, poderia ser underline(em baixo), overline(em cima) ou line-through(linha ao meio) mas colocamos none pra tirar.*/
+    font-weight: 500;
+
+    transition: background 0.2s; /*Suavizar a transição do hover, no caso ao atualizar a página ele transita o background pro novo, com a duração de 0.2s pra transição ficar mais fluída, resumindo isso é só pra maior fluidez, o bagulho do botão mudar ao passar o mouse é só do pseudo-selector.*/
+}
+
+/*pseudo-selector (pseudo-seletores são justamente esses seletores de estado, tipo, no caso abaixo está dizendo: se passar o mouse em cima (hover), aplique tais especificações de estilo.*/
+ul li a:hover /*Aplica as coisas ao passar o mouse em cima (hover)*/ {
+background: var(--surface-color-hover);
+border: 1.5px solid var(--text-color);
+}
+
+#social-links {
+    display: flex;
+    /*gap: 16px; [Gap só funciona com display flex, mais pra cima do código você vai ver flex-direction que também só funfa com display flex]*/
+    padding: 24px 0;
+    font-size: 24px; /*Muda o tamanho de todos os elementos dentro de social links, que no caso são os ícones*/
+    justify-content: center;
+}
+
+#social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    transition: background 0.2s;
+    border-radius: 50%; /*Bolinha perfeita*/
+}
+
+#social-links a:hover {
+    background: var(--social-link-hover);
+    padding: 16px;
+}
+
+footer {
+    padding: 24px 0;
+    text-align: center;
+    font-size: 14px;
+}

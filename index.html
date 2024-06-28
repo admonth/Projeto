@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>DevLinks</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="profile">
+                <img src="./assets/blackcat.png" alt="Foto de avatar do perfil de gato preto">
+                <p>@admonth</p>
+            </div>
+
+            <div id="switch" onclick="toggleMode()">
+                <button></button>
+                <span></span>
+             </div>
+
+            <ul>
+                <li>
+                    <a href="#" target="_blank" rel="external"
+                    >Inscrever-se no NLW</a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" rel="external"
+                    >Baixar meu e-book</a>
+                </li>
+                <li>
+                    <a href="https://github.com/admonth" target="_blank" rel="external"
+                    >Ver meu portfólio</a>
+                </li>
+                <li>
+                    <a href="https://rocketseat.com.br/explorer" target="_blank" rel="external"
+                    >Conheça o Explorer</a>
+                </li>
+            </ul>
+            <div id="social-links">
+                <a href="https://github.com/admonth" target="_blank" rel="external">
+                    <ion-icon name="logo-github"></ion-icon>
+                </a>
+                <a href="https://instagram.com/admonithiago" target="_blank" rel="external">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="https://youtube.com/channel/UCWJOtNg40U2HGC92GURM3Qg" target="_blank" rel="external">
+                    <ion-icon name="logo-youtube"></ion-icon>
+               </a>
+               <a href="https://linkedin.com/in/thiago-admoni-correa-2174492ba" target="_blank" rel="external">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+               </a>
+            </div>
+            <footer>
+                Feito com ♥ por <a href="https://github.com/admonth">Admonth</a>
+            </footer>
+        </div>
+
+        <script src="script.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>
+<!--div é uma caixa genérica que não tem estilos que o browser aplica nela (tem alguns estilos sim, mas são bem específicos, voce vai estudar isso no futuro)-->
+
+<!--SVG é um arquivo que basicamente vai desenhar alguma coisa pra gente com uma boa qualidade, mas vai desenhar de uma maneira "programática", é só conferir que o arquivo é cheio de códigos e se tu bota uma tag img src puxando esse arquivo do sistema, por exemplo o MoonStars.svg vai te dar um desenho de uma lua (Tipo, porque o código do arquivo ta fazendo uma lua, não é todo arquivo que tu colocar o nome MoonStars.svg que vai virar uma lua, no caso é só um nome intuitivo pro arquivo mesmo).-->
