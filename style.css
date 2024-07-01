@@ -100,11 +100,24 @@ Outro adendo IMPORTANTÍSSIMO: todos os elementos inline vão permitir que seu p
     left: 0;
     z-index: 1;
     transform: translateY(-50%); /*Lembra daquela história de X e Y? pensa naqueles gráfios lá que sao tipo um +, a linha reta (vertical) é o Y, e o que passa no meio (horizontal, tu lembra de horizonte) é o X; O Y você usa para alinhar para cima e para baixo e o X para os lados, aí ta dizendo: pega esse botão e deixa 50% dele para fora do switch (-50%), só que esse -50% é para cima, se tu colocar 50% ele vai deixar 50% dele para fora, só que para baixo.*/
+    animation: slide-back 0.4s;
+    /*Aqui é só a animação do deslize de volta, no caso não tem forwards porque o ponto inicial antes da animação já é left:0, então seria redundante.*/
 }
 
 .light #switch button {
+    animation: slide-in 0.4s forwards;
+   /*Anteriormente era:
     right: 0;
-    left: initial; /*volta pra sua maneira inicial*/
+    left: initial; (volta pra sua maneira inicial)
+    Porque traziamos o left:0 pra right:0 e o botão ia de esquerda pra direita direto, o left initial dizia obviamente que a posição inicial seria o left (esquerda, e o tema escuro).
+    Mas agora se você ir pra baixo no keyframes, vai entender que vai ter um animation com o nome do keyframes e a duração da animação do keyframes.
+    O forwards aqui define que as propriedades que a gente deixou no slide-in vão permanecer. Se não tivesse o forwards, o botão iria voltar pra posição inicial antes da animação, exemplo: 
+    Toda animação tem seu começo e fim, quando ela chega no seu fim, no caso 0.4s, ela acaba e volta pro inicial, que no caso é left:0. O forwards fala pro slide-in o seguinte: Ei slide-in, quando você terminar, mantém as propriedades que estão no to (No caso, left:50%).
+    */
+}
+
+#switch button:hover {
+    outline: 8px solid var(--social-link-hover);
 }
 
 #switch span {
@@ -192,3 +205,23 @@ footer {
         --bg-url: url(./assets/bg-desktop-light.jpg);
     }
 }
+
+@keyframes slide-in {
+    from {
+        left:0;
+    }
+    to {
+        left:50%;
+    }
+}
+/*essa at rule ou sei la como escreve, é pra fazer animações, (keyframes), e isso do lado dela é o nome da animação, demos o nome de slide-in porque vai ser o deslize do botao, mas poderia ser chamado de Sérgio.
+Anteriormente pro botão ir de esquerda pra direita (modo escuro e iluminado), usavamos left: 0 e right:0, mas aqui colocamos left:50% em vez do right, só pra não precisar mexer no right.*/
+
+@keyframes slide-back {
+   from {
+    left:50%;
+   }
+   to {
+    left:0;
+   }
+} /*Aqui é só a volta, sabe quando você volta do tema claro pro escuro? Essa parte também precisa ter uma animação né, é isso.
