@@ -35,6 +35,7 @@ body {
 
     /* background: color image repeat position/size*/
     background: var(--bg-url) no-repeat top center/cover;
+    height: 100vh; /*Esse 100vh se trata de 100 viewport height, basicamente, divide a altura visivel de todo o espaço disponível em 100 pedaçinhos, colocando 100vh, diz pra ocupar todo o espaço disponivel (fizemos isso porque lá atrás, no media, a gente fez pra largura a partir de 700 pixels virar o plano de fundo desktop, só que com isso, quando se expande, só os lados ficam ocupados pelo plano de fundo, aí fizemos esse plano de fundo ocupar toda a tela, com esse 100vh*/
     
 }
 
@@ -179,4 +180,15 @@ footer {
     padding: 24px 0;
     text-align: center;
     font-size: 14px;
+}
+
+/*media queries */
+@media (min-width: 700px) {
+    :root {
+        --bg-url: url(./assets/bg-desktop.jpg);
+    }
+
+    .light {
+        --bg-url: url(./assets/bg-desktop-light.jpg);
+    }
 }
