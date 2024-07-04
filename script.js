@@ -15,11 +15,11 @@ function toggleMode() {
     // substituir a imagem
     if(html.classList.contains('light')) {
     //se tiver light mode, adicionar a imagem light
-    img.setAttribute('src', "./assets/whitecat.png")
+    img.setAttribute('src', "./assets/red-cat.png")
     img.setAttribute('alt', 'Foto de avatar do perfil de gato branco')
     } else {
         //se tiver sem light mode, manter a imagem normal
-        img.setAttribute('src', "./assets/blackcat.png")
+        img.setAttribute('src', "./assets/leaf-cat.png")
         img.setAttribute('alt', 'Foto de avatar do perfil de gato preto')
     }
 }

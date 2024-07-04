@@ -9,22 +9,22 @@
 
 :root {
     --text-color: white;
-    --bg-url: url(./assets/cats-mobile.jpeg);
+    --bg-url: url(./assets/green-wallpaper-mobile.jpeg);
     --stroke-color: rgba(255, 255, 255, 0.5);
     --surface-color: rgba(255, 255, 255, 0.1);
     --surface-color-hover: rgba(255, 255, 255, 0.05);
     --social-link-hover: rgba(255, 255, 255, 0.2);
-    --switch-bg-url: url(./assets/moon-stars.svg);
+    --switch-bg-url: url(./assets/leaf.svg);
 } /*Root: raiz; Estou definindo uma variável (--text-color) pro estilo e toda vez que eu usar ela algo vai ficar branco, por exemplo: Eu poderia substituir o "color: #ffffff" do "body *" por "color: var(--text-color);" e teria a mesma funcionalidade já que defini essa variável como white.*/
 
 .light {
     --text-color: black;
-    --bg-url: url(./assets/cats-mobile-light.jpeg);
+    --bg-url: url(./assets/red-wallpaper-mobile.jpeg);
     --stroke-color: rgba(0, 0, 0, 0.5);
     --surface-color: rgba(0, 0, 0, 0.05);
     --surface-color-hover: rgba(0, 0, 0, 0.02);
     --social-link-hover: rgba(0, 0, 0, 0.1);
-    --switch-bg-url: url(./assets/sun.svg);
+    --switch-bg-url: url(./assets/fire.svg);
 }
 
 body {
@@ -91,7 +91,7 @@ Outro adendo IMPORTANTÍSSIMO: todos os elementos inline vão permitir que seu p
 #switch button {
     width: 32px;
     height: 32px;
-    background: white var(--switch-bg-url) no-repeat center;
+    background: rgb(63, 204, 63) var(--switch-bg-url) no-repeat center;
     border: 0;
     border-radius: 50%;
 
@@ -114,6 +114,7 @@ Outro adendo IMPORTANTÍSSIMO: todos os elementos inline vão permitir que seu p
     O forwards aqui define que as propriedades que a gente deixou no slide-in vão permanecer. Se não tivesse o forwards, o botão iria voltar pra posição inicial antes da animação, exemplo: 
     Toda animação tem seu começo e fim, quando ela chega no seu fim, no caso 0.4s, ela acaba e volta pro inicial, que no caso é left:0. O forwards fala pro slide-in o seguinte: Ei slide-in, quando você terminar, mantém as propriedades que estão no to (No caso, left:50%).
     */
+    background-color: red;
 }
 
 #switch button:hover {
@@ -198,11 +199,11 @@ footer {
 /*media queries */
 @media (min-width: 700px) {
     :root {
-        --bg-url: url(./assets/cats-desktop.jpeg);
+        --bg-url: url(./assets/green-wallpaper-desktop.jpeg);
     }
 
     .light {
-        --bg-url: url(./assets/cats-desktop-light.jpeg);
+    --bg-url: url(./assets/red-wallpaper-desktop.jpeg);
     }
 }
 
